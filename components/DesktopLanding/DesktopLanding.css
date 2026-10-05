@@ -1,0 +1,85 @@
+.landing-container {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 120px;
+
+    background-color: white;
+}
+
+.landing-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+}
+.landing-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: black;
+}
+
+.interactions-container {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 50px;
+}
+
+.qr-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    aspect-ratio: 1/1;
+
+    padding: 20px;
+
+    border-radius: 20px;
+    outline: 1px solid #7e7e7e;
+
+    box-shadow: -2px 5px 15px 1px rgba(0,0,0,0.37);
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-button {
+    width: 100%;
+    min-width: 450px;
+    height: 33%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 10px;
+    padding: 0 20px;
+
+    border-radius: 20px;
+    outline: 1px solid #7e7e7e;
+
+    color: black;
+    font-size: 23px;
+    font-weight: 600;
+
+    box-shadow: -2px 5px 15px 1px rgba(0,0,0,0.37);
+}
+
+.waste-icon {
+    width: 35px;
+    height: 35px;
+}

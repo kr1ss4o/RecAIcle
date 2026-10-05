@@ -1,0 +1,44 @@
+nav.navbar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.smallNav {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    outline: 1px solid #7e7e7e;
+    color: inherit;
+    text-decoration: none;
+
+    padding: 10px;
+    border-radius: 360px;
+}
+
+div.bigNav {
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    outline: 1px solid #7e7e7e;
+
+    font-weight: 600;
+
+    padding: 0 50px;
+    border-radius: 100px;
+}

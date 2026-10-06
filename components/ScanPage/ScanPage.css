@@ -6,6 +6,7 @@
     background-color: white;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -29,6 +30,13 @@ div.dropContainer {
 
     text-align: center;
 }
+label.dropLabel {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+}
 img.importIcon {
     width: 40px;
     height: 40px;
@@ -40,4 +48,64 @@ span.dropUpper {
 span.dropLower {
     font-size: 14px;
     font-weight: 400;
+}
+
+/* Drag and drop feedback */
+
+.dropContainer {
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.dropContainer.dragging {
+    border-color: #22c55e;
+    background-color: #f0fdf4;
+}
+
+/* Image preview after upload */
+
+.dropLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.imagePreview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Image analyze button */
+
+.analyzeButton {
+    margin-top: 2rem;
+    background-color: #22c55e;
+    color: white;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.analyzeButton:hover {
+    background-color: #16a34a;
+    transform: translateY(-2px);
+}
+
+.analyzeButton:active {
+    transform: scale(0.98);
+}
+
+.analyzeButton:disabled {
+    background-color: #86efac;
+    cursor: not-allowed;
+    transform: none;
 }

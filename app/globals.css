@@ -3,3 +3,36 @@
 @theme {
    --breakpoint-desktop: 75rem;
 }
+
+body {
+   background-color: black;
+}
+
+main {
+   animation: page-enter 420ms ease-out both;
+}
+
+button,
+a {
+   transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+}
+
+button:hover:not(:disabled),
+a:hover {
+   transform: translateY(-2px);
+}
+
+button:hover:not(:disabled) {
+   filter: brightness(0.96);
+}
+
+button:focus-visible,
+a:focus-visible {
+   outline: 2px solid #24734f;
+   outline-offset: 3px;
+}

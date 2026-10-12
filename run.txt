@@ -1,0 +1,2 @@
+Run FastAPI line
+python -m uvicorn ai.api:app --reload --port 8000

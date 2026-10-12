@@ -1,6 +1,7 @@
 import QRCode from "react-qr-code";
 import { CircleUserRound, Info } from "lucide-react";
 import "./DesktopLanding.css";
+import Link from "next/link";
 
 export default function DesktopLanding() {
     return (
@@ -12,18 +13,18 @@ export default function DesktopLanding() {
                     <QRCode value="https://example.com" className="w-full object-contain min-h-[200px] min-w-[200px]" />
                 </div>
                 <div className="buttons-container">
-                    <button className="landing-button">
+                    <Link className="landing-button" href="/account">
                         My Account
                         <CircleUserRound size={35} />
-                    </button>
-                    <button className="landing-button">
+                    </Link>
+                    <Link className="landing-button" href="aboutus">
                         About Us
                         <Info size={35} />
-                    </button>
-                    <button className="landing-button">
+                    </Link>
+                    <Link className="landing-button" href="wastelegened">
                         Waste Legend
                         <img src="/icons/waste-icon.png" alt="Waste Legend" className="waste-icon" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </main>

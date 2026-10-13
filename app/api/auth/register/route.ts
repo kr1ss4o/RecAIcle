@@ -12,7 +12,7 @@ export async function POST(request: Request) {
         if (!name || !email || !password) {
             return NextResponse.json(
                 { message: "A user with this email already exists." },
-                { status: 409 }
+                { status: 400 }
             )
         }
 
@@ -28,12 +28,15 @@ export async function POST(request: Request) {
             }
         })
 
+        // Success message
         return NextResponse.json(
             { message: "Account created succesfully." },
             { status: 201 }
         )
 
     } catch (error) {
+
+        // Error output
         console.error("Register error:", error);
 
         return NextResponse.json(

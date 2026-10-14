@@ -44,7 +44,7 @@
     border-radius: 20px;
     outline: 1px solid #7e7e7e;
 
-    box-shadow: -2px 5px 15px 1px rgba(0,0,0,0.37);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .buttons-container {
@@ -76,7 +76,7 @@
     font-size: 23px;
     font-weight: 600;
 
-    box-shadow: -2px 5px 15px 1px rgba(0,0,0,0.37);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .waste-icon {

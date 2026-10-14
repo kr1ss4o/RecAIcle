@@ -1,0 +1,9 @@
+div.loadingBody {
+    min-height: 100dvh;
+    width: 100%;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -56,7 +56,7 @@ export default function Login() {
 				</div>
 
 				<button className="auth-submit" type="button" onClick={()=>handleLogin()}>
-					<span>Continue</span>
+					<span>Log in</span>
 					<ArrowRight size={18} aria-hidden="true" />
 				</button>
 

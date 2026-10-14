@@ -9,11 +9,7 @@ type ImageUploaderProps = {
     onImageSelect: (file: File) => void;
 };
 
-export default function ImageUploader({
-    selectedImage,
-    previewUrl,
-    onImageSelect,
-}: ImageUploaderProps) {
+export default function ImageUploader({ selectedImage, previewUrl, onImageSelect }: ImageUploaderProps) {
     const [isDragging, setIsDragging] = useState(false);
 
     function handleDrop(e: DragEvent<HTMLDivElement>) {

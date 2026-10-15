@@ -25,7 +25,7 @@ export default function Account() {
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Render the fields when router 
+    // Backend verifies and gets the info for useEffect to assign to the useStates
     useEffect(() => {
         async function getAccount() {
             const response = await fetch("/api/auth/account");

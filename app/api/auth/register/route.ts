@@ -11,9 +11,22 @@ export async function POST(request: Request) {
         // Check the required fields
         if (!name || !email || !password) {
             return NextResponse.json(
-                { message: "A user with this email already exists." },
+                { message: "Please fill in all required fields." },
                 { status: 400 }
             )
+        }
+
+        const existingUser = await prisma.user.findUnique({
+            where: {
+                email
+            }
+        });
+
+        if (existingUser) {
+            return NextResponse.json(
+                { message: "A user with this email already exists." },
+                { status: 409 }
+            );
         }
 
         // Hash password

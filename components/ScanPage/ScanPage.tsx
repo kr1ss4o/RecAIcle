@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { AlertCircle } from "lucide-react";
 import ImageUploader from "./ImageUploader";
 import ScanResultModal from "./Modals/ScanResultModal";
 import "./ScanPage.css";
@@ -15,6 +16,7 @@ export default function ScanPage() {
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
     const [isAnalyzing, setIsAnalyzing] = useState(false);
+    const [error, setError] = useState("");
 
     // NEW: stores the AI result
     const [scanResult, setScanResult] = useState<ScanResult | null>(null);
@@ -36,6 +38,7 @@ export default function ScanPage() {
 
         setIsAnalyzing(true);
         setScanResult(null);
+        setError("");
 
         try {
             const formData = new FormData();
@@ -62,6 +65,7 @@ export default function ScanPage() {
 
         } catch (error) {
             console.error("Error analyzing image:", error);
+            setError("Failed to analyze image. Please try again.");
         } finally {
             setIsAnalyzing(false);
         }
@@ -72,8 +76,19 @@ export default function ScanPage() {
             <ImageUploader
                 selectedImage={selectedImage}
                 previewUrl={previewUrl}
-                onImageSelect={setSelectedImage}
+                onImageSelect={(image) => {
+                    setSelectedImage(image);
+                    setError("");
+                }}
             />
+
+            {error && (
+                <div className="error-cont" role="alert">
+                    <AlertCircle size={18} aria-hidden="true" />
+                    <span className="error-title">Error:</span>
+                    <span className="error-desc">{error}</span>
+                </div>
+            )}
 
             {selectedImage !== null && (
                 <button

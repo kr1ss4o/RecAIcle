@@ -23,6 +23,10 @@ section.account-sections {
     gap: 12px;
 }
 
+.account-container > .error-cont {
+    width: min(100%, 420px);
+}
+
 h1.sectionTitle {
     margin: 0 0 10px;
     color: black;

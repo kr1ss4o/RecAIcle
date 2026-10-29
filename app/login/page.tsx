@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { AlertCircle, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import "../auth.css";
@@ -9,6 +9,7 @@ export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
 
     const router = useRouter();
 
@@ -27,6 +28,7 @@ export default function Login() {
         
         if (!response.ok) {
             console.log(data.message);
+			setError(data.message);
             return;
         }
 
@@ -41,6 +43,13 @@ export default function Login() {
 					<p>Log in to continue.</p>
 				</header>
 				<div className="auth-fields">
+					{ error && (
+						<div className="error-cont" role="alert">
+							<AlertCircle size={18} aria-hidden="true" />
+							<span className="error-title">Error:</span>
+							<span className="error-desc">{error}</span>
+						</div>
+					)}
 					<label className="auth-field">
 						<span>Email address</span>
 						<input type="email" name="email" placeholder="you@example.com" autoComplete="email"

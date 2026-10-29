@@ -7,3 +7,18 @@ div.loadingBody {
     justify-content: center;
     align-items: center;
 }
+
+.loadingSpinner {
+    width: 3rem;
+    height: 3rem;
+    border: 0.25rem solid #e5e7eb;
+    border-top-color: #16a34a;
+    border-radius: 50%;
+    animation: loadingSpinnerRotation 0.8s linear infinite;
+}
+
+@keyframes loadingSpinnerRotation {
+    to {
+        transform: rotate(360deg);
+    }
+}

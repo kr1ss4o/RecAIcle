@@ -3,7 +3,7 @@
 import "./account.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { PenLine } from "lucide-react";
+import { AlertCircle, PenLine } from "lucide-react";
 import { Check } from "lucide-react";
 import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
 
@@ -13,6 +13,7 @@ export default function Account() {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     const router = useRouter();
 
@@ -47,62 +48,83 @@ export default function Account() {
 
     // Logout function called by the logout button
     async function handleLogout() {
+        setError("");
 
-        const response = await fetch("/api/auth/logout", {
-            method: "POST"
-        })
+        try {
+            const response = await fetch("/api/auth/logout", {
+                method: "POST"
+            })
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (!response.ok) {
-            console.log(data.message);
+            if (!response.ok) {
+                setError(data.message);
+                return;
+            }
+
+            router.push("/login");
+        } catch (error) {
+            console.error("Logout failed:", error);
+            setError("Unable to log out. Please try again.");
         }
-
-        router.push("/login");
     }
 
     async function handleSaveName() {
+        setError("");
 
-        const response = await fetch("/api/auth/account", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name
+        try {
+            const response = await fetch("/api/auth/account", {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name
+                })
             })
-        })
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (!response.ok) {
-            console.log(data.message)
+            if (!response.ok) {
+                setError(data.message);
+                return;
+            }
+
+            setUser(data.user);
+            setEditingName(false);
+        } catch (error) {
+            console.error("Failed to update account name:", error);
+            setError("Unable to save your name. Please try again.");
         }
-
-        setUser(data.user);
-        setEditingName(false);
     }
     
     async function handleSaveEmail() {
+        setError("");
 
-        const response = await fetch("/api/auth/account", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email
+        try {
+            const response = await fetch("/api/auth/account", {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email
+                })
             })
-        })
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (!response.ok) {
-            console.log(data.message)
+            if (!response.ok) {
+                setError(data.message);
+                return;
+            }
+
+            setUser(data.user);
+            setEditingEmail(false);
+        } catch (error) {
+            console.error("Failed to update account email:", error);
+            setError("Unable to save your email address. Please try again.");
         }
-
-        setUser(data.user);
-        setEditingEmail(false);
     }
 
     // Wait for the request to finish before render
@@ -112,6 +134,13 @@ export default function Account() {
     
     return(
         <main className="account-container">
+                {error && (
+                    <div className="error-cont" role="alert">
+                        <AlertCircle size={18} aria-hidden="true" />
+                        <span className="error-title">Error:</span>
+                        <span className="error-desc">{error}</span>
+                    </div>
+                )}
                 <section className="account-sections">
                     <h1 className="sectionTitle">Account information</h1>
                     <div className="accountField">

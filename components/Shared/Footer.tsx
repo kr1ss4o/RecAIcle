@@ -1,13 +1,14 @@
 import "./Footer.css";
+import Link from "next/link";
 
 export default function Footer() {
     return (
         <footer>
             <div className="flex justify-center items-center gap-[30px]">
                 <div className="footerSection">
-                    <h2 className="footerUpper">About us:</h2>
-                    <span className="footerLower">What is RecAIcle</span>
-                    <span className="footerLower">Technologies</span>
+                    <h2 className="footerUpper">More:</h2>
+                    <Link className="footerLower" href="/aboutus">Technologies and Purpose</Link>
+                    <Link className="footerLower" href="/wastelegend">Waste Legend</Link>
                 </div>
                 <div className="footerSection">
                     <h2 className="footerUpper">Support:</h2>

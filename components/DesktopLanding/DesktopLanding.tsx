@@ -21,7 +21,7 @@ export default function DesktopLanding() {
                         About Us
                         <Info size={35} />
                     </Link>
-                    <Link className="landing-button" href="wastelegened">
+                    <Link className="landing-button" href="/wastelegend">
                         Waste Legend
                         <img src="/icons/waste-icon.png" alt="Waste Legend" className="waste-icon" />
                     </Link>
